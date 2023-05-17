@@ -8,10 +8,11 @@ const Testing = () => {
     
   return (
     <div>
+      <Text>Test test</Text>
       {error && <Text fontSize='3xl' color='tomato'>We are Sorry. Something is not right with us!</Text>}
       
           <List>
-              {gamesData.map(game => <ListItem>{game.name}</ListItem>)}
+        {gamesData.map(game => <ListItem>{game.name} { } {game.id }</ListItem>)}
           </List>
     </div>
   )
