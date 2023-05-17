@@ -20,7 +20,13 @@ const useTest = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('https://cors-anywhere.herokuapp.com/http://ec2-100-25-24-155.compute-1.amazonaws.com:9030/rawg/games');
+            const config = {
+              headers: {
+                'origin': 'https://games-hub-one.vercel.app'
+              }
+            };
+      
+            const response = await axios.get('http://ec2-100-25-24-155.compute-1.amazonaws.com:9030/rawg/games', config);
             setGamesData(response.data);
           } catch (error) {
             console.error;
