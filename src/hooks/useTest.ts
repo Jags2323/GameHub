@@ -20,7 +20,7 @@ const useTest = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get('http://ec2-100-25-24-155.compute-1.amazonaws.com:9030/rawg/games');
+            const response = await axios.get('/proxy?url=http://ec2-100-25-24-155.compute-1.amazonaws.com:9030/rawg/games');
             setGamesData(response.data);
           } catch (error) {
             console.error;
