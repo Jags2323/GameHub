@@ -3,7 +3,7 @@ import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 import { Genres } from "./useGenres";
 
-interface Platform{
+export interface Platform{
     id: number;
     name: string;
     slug: string;
