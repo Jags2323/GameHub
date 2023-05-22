@@ -5,7 +5,12 @@ import GenresList from "./components/GenresList";
 import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import Testing from "./components/Testing";
+import { Platform } from "./hooks/useGames";
 
+
+export interface GameQuery {
+  platform: Platform | null;
+}
 function App() {
 
   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
