@@ -2,16 +2,17 @@ import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ThemeSwitch from "./ThemeSwitch";
 import SearchInput from "./SearchInput";
-const NavBar = () => {
+
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
   return (
     <div>
-      <HStack justifyContent="space-between" padding="10px">
+      <HStack padding="10px">
         <Image src={logo} boxSize="60px"></Image>
-
-        <Box width="200px">
-          <SearchInput />
-        </Box>
-
+        <SearchInput onSearch={onSearch} />
         <ThemeSwitch />
       </HStack>
     </div>

@@ -7,10 +7,11 @@ import SearchInput from "./SearchInput";
 
 interface Props {
   selectedGenre: Genres | null;
+  searchText: string;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { games, error, isLoading } = useGames(selectedGenre);
+const GameGrid = ({ selectedGenre, searchText }: Props) => {
+  const { games, error, isLoading } = useGames(selectedGenre, searchText);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -23,8 +24,8 @@ const GameGrid = ({ selectedGenre }: Props) => {
       )}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        padding={10}
-        spacing={10}
+        padding={8}
+        spacing={7}
       >
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
@@ -32,7 +33,6 @@ const GameGrid = ({ selectedGenre }: Props) => {
           <GameCard key={game.id} game={game} />
         ))}
       </SimpleGrid>
-      <SearchInput />
     </div>
   );
 };

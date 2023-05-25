@@ -6,14 +6,15 @@ import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import Testing from "./components/Testing";
 import { Platform } from "./hooks/useGames";
-
+import SearchInput from "./components/SearchInput";
 
 export interface GameQuery {
   platform: Platform | null;
+  searchText: string;
 }
 function App() {
-
   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+  const [searchT, setSearchT] = useState<string>("");
 
   return (
     <>
@@ -25,15 +26,15 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar onSearch={(searchText) => setSearchT(searchText)} />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
-            <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)}/>
+            <GenresList onSelectedGenre={(genre) => setSelectedGenre(genre)} />
           </GridItem>
         </Show>
         <GridItem area="main">
-          <GameGrid selectedGenre={selectedGenre} />
+          <GameGrid selectedGenre={selectedGenre} searchText={searchT} />
           <Testing />
         </GridItem>
       </Grid>
