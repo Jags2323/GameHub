@@ -9,10 +9,14 @@ interface Props {
 }
 
 const NavBar = ({ onSearch }: Props) => {
+  const handleImageClick = () => {
+    // Redirect to the default homepage
+    window.location.href = "/";
+  };
   return (
     <div>
       <HStack padding="10px">
-        <Link to="/" replace={true} onClick={() => window.location.reload()}>
+        <Link to="/" replace={true} onClick={handleImageClick}>
           <Image src={logo} boxSize="60px"></Image>
         </Link>
         <SearchInput onSearch={onSearch} />
