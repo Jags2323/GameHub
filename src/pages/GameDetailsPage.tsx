@@ -1,4 +1,4 @@
-import { GridItem, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, GridItem, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import GameScreenshots from "../components/GameScreenshots";
@@ -10,7 +10,6 @@ const GameDetailPage = () => {
   if (isLoading) return <Spinner />;
 
   if (error || !game) throw error;
-  
 
   return (
     <>
@@ -20,7 +19,9 @@ const GameDetailPage = () => {
           <Text>{game.description_raw}</Text>
         </GridItem>
         <GridItem>
-          <GameScreenshots gameId={game.id} />
+          <Box maxH="500px" overflowY="auto">
+            <GameScreenshots gameId={game.id} />
+          </Box>
         </GridItem>
       </SimpleGrid>
     </>
