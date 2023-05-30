@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import Testing from "./components/Testing";
 import { Platform } from "./hooks/useGames";
-import SearchInput from "./components/SearchInput";
 
 export interface GameQuery {
   platform: Platform | null;
@@ -20,9 +19,8 @@ function App() {
     <>
       <Grid
         templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" 
-              "aside main"`,
+          base: `"main"`,
+          lg: `"aside main"`,
         }}
       >
         <GridItem area="nav">
