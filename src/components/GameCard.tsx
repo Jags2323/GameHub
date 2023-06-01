@@ -1,6 +1,5 @@
 import { Game } from "../hooks/useGames";
 import {
-  Box,
   Card,
   CardBody,
   HStack,
@@ -24,13 +23,26 @@ const GameCard = ({ game }: Props) => {
   const [isFavorite, setFavorite] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     setFavorite(!isFavorite);
   };
 
+  const handleCardEnter = () => {
+    setHovered(true);
+  };
+
+  const handleCardLeave = () => {
+    setHovered(false);
+  };
+
   const cardAnimation = useSpring({
-    transform: hovered ? "scale(1.03)" : "scale(1)",
+    transform: `scale(${hovered ? 1.03 : 1})`,
     boxShadow: hovered ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none",
+    opacity: hovered ? 1 : 0.9,
+    borderRadius: hovered ? "10px" : "0px",
+    config: { tension: 300, friction: 20 },
   });
 
   const favoriteButtonAnimation = useSpring({
@@ -46,17 +58,15 @@ const GameCard = ({ game }: Props) => {
 
   return (
     <animated.div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={handleCardEnter}
+      onMouseLeave={handleCardLeave}
       style={cardAnimation}
     >
-      <Card borderRadius={10} overflow="hidden" key={game.id}>
-        <Image src={game.background_image} />
-        <CardBody>
-          <Box>
-            <Heading fontSize="2xl">
-              <Link to={"/games/" + game.slug}>{game.name}</Link>
-            </Heading>
+      <Link to={"/games/" + game.slug}>
+        <Card borderRadius={10} overflow="hidden" key={game.id}>
+          <Image src={game.background_image} />
+          <CardBody>
+            <Heading fontSize="2xl">{game.name}</Heading>
             <HStack justifyContent="space-between">
               <IconList
                 platforms={game.parent_platforms?.map((p) => p.platform)}
@@ -80,10 +90,11 @@ const GameCard = ({ game }: Props) => {
                   </animated.div>
                 </Tooltip>
               </animated.div>
+              {/* Render the user login/signup component here */}
             </HStack>
-          </Box>
-        </CardBody>
-      </Card>
+          </CardBody>
+        </Card>
+      </Link>
     </animated.div>
   );
 };
