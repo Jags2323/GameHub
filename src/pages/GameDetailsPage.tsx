@@ -25,9 +25,11 @@ const GameDetailPage = () => {
         {game.name}
       </Heading>
       <GameScreenshots gameId={game.id} />
-      <Text fontSize="lg" textAlign="center">
-        {game.description_raw}
-      </Text>
+      <Box>
+        <Text fontSize="lg" textAlign="center">
+          {game.description_raw}
+        </Text>
+      </Box>
     </div>
   );
 };
