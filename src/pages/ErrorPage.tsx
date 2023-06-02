@@ -7,7 +7,9 @@ const ErrorPage = () => {
   const error = useRouteError();
   return (
     <>
-      <NavBar />
+      <NavBar onSearch={function (searchText: string): void {
+        throw new Error("Function not implemented.");
+      } } />
       <Box padding={6}>
         <Heading>OOps</Heading>
         <Text>

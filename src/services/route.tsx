@@ -3,8 +3,20 @@ import Layout from "../pages/Layout";
 import HomePage from "../pages/HomePage";
 import GameDetailsPage from "../pages/GameDetailsPage";
 import ErrorPage from "../pages/ErrorPage";
+import Login from "../pages/Login";
+import { Children, useState } from "react";
+import Register from "../components/Register";
 
 const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  
   {
     path: "/",
     element: <Layout />,
@@ -17,3 +29,16 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Login />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       { path: 'home/', element: <Layout /> },
+//     ],
+//   },
+// ]);
+
+// export default router;
