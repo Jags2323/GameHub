@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Spinner, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Image, Spinner, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ThemeSwitch from "./ThemeSwitch";
 import SearchInput from "./SearchInput";
@@ -33,6 +33,9 @@ const NavBar = ({ onSearch }: Props) => {
           </Link>
         )}
         <SearchInput onSearch={onSearch} />
+        <Link to ={'/login'}>
+          <Button type="submit">SignOut</Button>
+        </Link>
         <ThemeSwitch />
       </HStack>
     </div>
