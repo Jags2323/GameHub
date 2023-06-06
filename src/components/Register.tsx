@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
 
 
@@ -85,6 +85,10 @@ const Register = () => {
             >
               Save
             </button>
+
+            <Link to ={'/login'}>
+                <button>Login</button>
+            </Link>
           </form>
         </div>
       </div>
