@@ -4,7 +4,6 @@ import HomePage from "../pages/HomePage";
 import GameDetailsPage from "../pages/GameDetailsPage";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
-import { Children, useState } from "react";
 import Register from "../components/Register";
 
 const router = createBrowserRouter([
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-  
+
   {
     path: "/",
     element: <Layout />,
